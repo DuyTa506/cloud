@@ -7,9 +7,16 @@
     "node": "16.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon backend/server.js",
-    "start": "concurrently --kill-others \"npm run dev\" \"npm run start --prefix frontend\""
+    "test": "mocha server/tests",
+    "install-all": "concurrently \"npm install\" \"cd frontend && npm install\"",
+    "build": "cd frontend && npm build",
+    "dev": "concurrently \"nodemon backend/server.js\" \"cd frontend && npm run start\"",
+    "start": "concurrently --kill-others \"npm run dev\" \"npm run start --prefix frontend\"",
+    "heroku-postbuild": "cd frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DuyTa506/cloud.git"
   },
   "author": "kiana",
   "license": "ISC",
