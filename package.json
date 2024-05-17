@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha server/tests",
-    "install-all": "concurrently \"npm install\" \"cd frontend && npm install\"",
+    "install-all": "concurrently \"npm install --legacy-peer-deps\" \"cd frontend && npm install --legacy-peer-deps\"",
     "build": "cd frontend && npm build",
     "dev": "concurrently \"nodemon backend/server.js\" \"cd frontend && npm run start\"",
     "start": "concurrently --kill-others \"npm run dev\" \"npm run start --prefix frontend\"",
